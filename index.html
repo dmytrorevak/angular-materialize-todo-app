@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular Tasks List</title>
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/lib/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/lib/angular/angular.min.js"></script>
+</head>
+<body data-ng-app="tasksList" class="teal lighten-5 teal-text text-darken-1">
+    <div class="container" ng-controller="tasksListCtrl">
+        <h3 class="heading">Plan your day</h3>
+        <h5 class="user-name">User: Dmytro Revak. Count of Tasks - {{tasksList.length}}</h5>
+        <div class="adding-task-panel input-field">
+            <label for="add-task-field">Enter the task</label>
+            <input type="text" id="add-task-field" ng-model="newTask" required>
+            <button type="button" class="adding-button btn-floating btn-large waves-effect waves-light"  data-ng-click="addNewTask(newTask)">Add</button>
+        </div>
+        <table class="tasks-list">
+            <tr class="table-headings teal darken-1 white-text">
+                <th class="table-heading">Deleting</th>
+                <th class="table-heading">Task</th>
+                <th class="table-heading">Check</th>
+                <th class="table-heading">Done/In progress</th>
+                <th class="table-heading">Edit</th>
+            </tr>
+            <tr class="task-row" ng-repeat="task in tasksList track by $index">
+                <td class="task-date">
+                    <button type="button" class="waves-effect waves-light btn red" data-ng-click="removeTask($index)">Delete</button>
+                </td>
+                <td class="task-date">
+                    {{task.taskName}}
+                </td>
+                <td class="task-date">
+                    <div class="switch">
+                        <label>
+                            <input type="checkbox" ng-model="task.isDone">
+                            <span class="lever"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="task-date">
+                    <span class="in-progress-text red-text" ng-show="!task.isDone">In progress</span>
+                    <span class="done-text green-text" ng-show="task.isDone">Done</span>
+                </td>
+                <td class="task-date">
+                    <button type="button" class="waves-effect waves-light btn blue" data-ng-click="showEditPanel($index)">Edit</button>
+                </td>
+            </tr>
+        </table>
+        <div class="editing-task-panel input-field" ng-show="isEditPanelVisible">
+            <input type="text" id="edit-task-field" ng-model="currentEditingTaskText">
+            <button type="button" class="save-edit-button btn-floating btn-large waves-effect waves-light blue"  data-ng-click="editTask()">Save</button>
+        </div>
+    </div >
+    <script src="assets/js/jquery-3.1.1.min.js"></script>
+    <script src="assets/lib/materialize/js/materialize.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/tasksListCtrl.js"></script>
+</body>
+</html>

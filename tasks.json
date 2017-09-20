@@ -1,0 +1,30 @@
+[
+    {
+        "taskName": "Винести сміття",
+        "isDone": false
+    },
+    {
+        "taskName": "Поприбирати",
+        "isDone": false
+    },
+    {
+        "taskName": "Написати домашнє",
+        "isDone": false
+    },
+    {
+        "taskName": "Підлити квіти",
+        "isDone": false
+    },
+    {
+        "taskName": "Вивчити Angular",
+        "isDone": false
+    },
+    {
+        "taskName": "Не забути про пари",
+        "isDone": false
+    },
+    {
+        "taskName": "Знайти сенс життя",
+        "isDone": false
+    }
+]
